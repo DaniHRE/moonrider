@@ -1,18 +1,17 @@
 const Discord = require("discord.js"); 
 const client = new Discord.Client({intents: 32767});
-const config = require("./config.json"); 
+const config = require("../config.json"); 
 
 const loadEvents = require('./modules/loadEvents');
 const loadCommands = require('./modules/loadCommands');
 const loadPlayer = require('./modules/loadPlayer');
 
-
 client.login(config.token); 
 
 client.once('ready', async () => {
-
-    console.log("✅ - Estou online!")
-
+    console.log("=================================")
+    console.log("✅ - Moonrider 🌑🩸 Online - ✅")
+    console.log("=================================")
 })
 
 client.on('messageCreate', message => {
@@ -22,7 +21,8 @@ client.on('messageCreate', message => {
      if (message.content.startsWith(`<@!${client.user.id}>`) || message.content.startsWith(`<@${client.user.id}>`)) return;
 
     const args = message.content
-        .trim().slice(config.prefix.length)
+        .trim()
+        .slice(config.prefix.length)
         .split(/ +/g);
     const command = args.shift().toLowerCase();
 
@@ -33,3 +33,7 @@ client.on('messageCreate', message => {
     console.error('Erro:' + err);
   }
 });
+
+loadEvents(client);  
+loadCommands(client);
+loadPlayer(client);
