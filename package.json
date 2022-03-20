@@ -2,7 +2,7 @@
   "name": "moonrider",
   "version": "1.0.0",
   "description": "Moonrider BOT",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "start": "node ./src/bot.js",
     "dev:local": "nodemon ./src/bot.js",
