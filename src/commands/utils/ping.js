@@ -8,18 +8,19 @@ module.exports = {
         
         let embedColor = "RANDOM";
 
-        let botPing = client.ws.ping;
-
         let firstEmbed = new Discord.MessageEmbed()
         .setColor(embedColor)
-        .setDescription(`**\`🏓\` Calculando ping.**`);
-        
-        let secondEmbed = new Discord.MessageEmbed()
-        .setColor(embedColor)
-        .setDescription(`**O meu ping está em \`${botPing} ms\`.**`);
+        .setDescription(`**\`🏓\` Calculando ping. \`🏓\`**`);
 
         let embed = await message.reply({ content: `${message.author}`, embeds: [firstEmbed] }).then(msg => {
             setTimeout( () => {
+                let botPing = client.ws.ping;
+                let serverPing = msg.createdTimestamp - message.createdTimestamp;
+                        
+                let secondEmbed = new Discord.MessageEmbed()
+                    .setColor(embedColor)
+                    .setDescription(`**📶 Server Latency \`${serverPing} ms\` \n**
+                                    **💻 API Latency \`${botPing} ms\`**`);
                 msg.edit({ content: `${message.author}`, embeds: [secondEmbed] })
             }, 2000)
         })
