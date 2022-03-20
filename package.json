@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DaniHRE/moonrider#readme",
   "dependencies": {
+    "cfonts": "^2.10.0",
     "discord.js": "^13.6.0"
   },
   "devDependencies": {
