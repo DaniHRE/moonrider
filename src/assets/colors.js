@@ -9,4 +9,5 @@ module.exports = {
     roxo: "\x1b[35m",
     ciano: "\x1b[36m",
     branco: "\x1b[37m",
+    hidden: "\x1b[8m"
 };
