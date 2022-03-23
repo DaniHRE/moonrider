@@ -1,4 +1,5 @@
 const { QueryType } = require('discord-player');
+const Discord = require('discord.js');
 
 module.exports = {
     name: 'play',
@@ -28,13 +29,23 @@ module.exports = {
         }
         
         const msgLoad = await message.channel.send(`Loading your ${res.playlist ? 'playlist' : 'track'}... 🎧`);
-
+        console.log(res.tracks[0].thumbnail)
         const embedColor = "RANDOM";
 
-        const embedSend = await message.reply({ content: `${message.author}`, embeds: [msgLoad] }).then(msg => {    
+        const embedSend = await message.reply({ content: `${message.author}`, msgLoad }).then(msg => {    
                 const embedMusic = new Discord.MessageEmbed()
+                    .setTitle(res.tracks[0].title)
+                    .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
+                    .setImage(res.tracks[0].thumbnail)
+                    .setThumbnail("https://media.discordapp.net/attachments/867424753047044141/955976594248314880/3293810.png?width=128&height=128")
                     .setColor(embedColor)
-                    .setDescription();
+                    .addFields(
+                        { name: 'Autor:', value: `${res.tracks[0].author}`, inline: true },
+                        { name: 'Views', value: `${res.tracks[0].views}`, inline: true },
+                        { name: 'Duration', value: `${res.tracks[0].duration}`, inline: true },
+                    )
+                    .setTimestamp()
+                    .setFooter({ text: 'By Dino 🧡', iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` });
                 msg.edit({ content: `${message.author}`, embeds: [embedMusic] })
         })
 
