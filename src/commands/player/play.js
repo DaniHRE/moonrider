@@ -15,6 +15,11 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
+        if (res.tracks[0].duration == '0:00'){
+            await player.deleteQueue(message.guild.id);
+            return message.channel.send(` ${message.author} Ta tentando me derrubar? coloca uma **Música**. ❌`);
+        }
+        
         if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? ❌`);
 
         const queue = await player.createQueue(message.guild, {
@@ -27,7 +32,7 @@ module.exports = {
             await player.deleteQueue(message.guild.id);
             return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
         }
-        
+    
         const msgLoad = await message.channel.send(`Loading your ${res.playlist ? 'playlist' : 'track'}... 🎧`);
         console.log(res.tracks[0].thumbnail)
         const embedColor = "RANDOM";
@@ -41,11 +46,11 @@ module.exports = {
                     .setColor(embedColor)
                     .addFields(
                         { name: 'Autor:', value: `${res.tracks[0].author}`, inline: true },
-                        { name: 'Views', value: `${res.tracks[0].views}`, inline: true },
-                        { name: 'Duration', value: `${res.tracks[0].duration}`, inline: true },
+                        { name: 'Views:', value: `${res.tracks[0].views}`, inline: true },
+                        { name: 'Duração:', value: `${res.tracks[0].duration}`, inline: true },
                     )
                     .setTimestamp()
-                    .setFooter({ text: 'By Dino 🧡', iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` });
+                    .setFooter({ text: 'By Dino ❤️', iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` });
                 msg.edit({ content: `${message.author}`, embeds: [embedMusic] })
         })
 
