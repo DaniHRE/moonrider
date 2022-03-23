@@ -5,9 +5,9 @@
         "app": {
             "px": "!",
             "token": "OTU0MTUwMzI0ODAzODk1MzE2.YjO7vA.zXOmLCQ5whSmUKt42cvlJARqZf8",
-            "playing": "Lancelot Beserker 🌑🩸"
+            "playing": "Lancelot Beserker 🌑🩸",
+            "filters": ["8D", "gate", "haas", "phaser", "treble", "tremolo", "vibrato", "karaoke", "flanger", "mcompand", "pulsator", "subboost", "bassboost", "vaporwave", "nightcore", "normalizer", "surrounding"]
         },
-    
         "opt": {
             "DJ": {
                 "enabled": false,

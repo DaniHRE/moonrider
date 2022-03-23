@@ -13,7 +13,7 @@ module.exports = {
 
         if (!args[0]) return message.channel.send(`Please specify a valid filter to enable or disable ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter} (${client.config.app.px}filter ${actualFilter} to disable it).\n` : ''}`);
 
-        const filters = [];
+        const filters = client.config.app.filters
 
         queue.getFiltersEnabled().map(x => filters.push(x));
         queue.getFiltersDisabled().map(x => filters.push(x));
@@ -28,6 +28,6 @@ module.exports = {
 
         await queue.setFilters(filtersUpdated);
 
-        message.channel.send(`The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*`);
+        message.channel.send(`The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled ✅' : 'disabled ❌'}**\n*Reminder the longer the music is, the longer this will take.*`);
     },
 };
