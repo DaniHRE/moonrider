@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
+const { Client } = require("discord.js");
 const { Player } = require("discord-player");
-const client = new Discord.Client({intents: 32767});
-const config = require("../config"); 
+const config = require("../config");
 
 const color = require("./assets/colors.js");
 const banner = require("./assets/banner.js")
@@ -9,6 +9,7 @@ const cfonts = require("cfonts");
 
 colorful = (color, string, reset = '\x1b[5m') => color + string + reset;
 
+global.client = new Discord.Client({intents: 32767});
 client.config = config;
 client.cooldowns = new Discord.Collection();
 
@@ -16,7 +17,9 @@ global.player = new Player(client, config.opt.discordPlayer)
 
 const loadEvents = require('./modules/loadEvents');
 const loadCommands = require('./modules/loadCommands');
-// const loadPlayer = require('./modules/loadPlayer');
+const trackStarted = require('./modules/trackStarted');
+
+global.player.on("trackStart", trackStarted)
 
 client.login(config.token);
 
@@ -32,4 +35,3 @@ client.once('ready', async () => {
 
 loadEvents(client);  
 loadCommands(client);
-// loadPlayer(client);
