@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { QueryType } = require('discord-player');
+const Discord = require('discord.js');
 
 module.exports = {
     name: 'search',
@@ -24,14 +25,14 @@ module.exports = {
         const embed = new MessageEmbed();
 
         embed.setColor('RED');
-        embed.setAuthor(`Results for ${args.join(' ')}`, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
+        embed.setAuthor({name: `Results for ${args.join(' ')}`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
 
         const maxTracks = res.tracks.slice(0, 10);
 
         embed.setDescription(`${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\nSelect choice between **1** and **${maxTracks.length}** or **cancel** ⬇️`);
 
         embed.setTimestamp();
-        embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
+        embed.setFooter({text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: message.author.avatarURL({ dynamic: true })});
 
         message.channel.send({ embeds: [embed] });
 
@@ -56,8 +57,6 @@ module.exports = {
                 await player.deleteQueue(message.guild.id);
                 return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
             }
-
-            await message.channel.send(`Loading your search... 🎧`);
 
             queue.addTrack(res.tracks[query.content - 1]);
 
