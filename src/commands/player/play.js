@@ -20,7 +20,7 @@ module.exports = {
             await player.deleteQueue(message.guild.id);
             return message.channel.send(` ${message.author} Ta tentando me derrubar? coloca uma **Música**. ❌`);
         }
-        
+
         if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? ❌`);
 
         const queue = await player.createQueue(message.guild, {

@@ -15,6 +15,6 @@ module.exports = (queue, track) =>{
             { name: 'Duração:', value: `${track.duration}`, inline: true },
         )
         .setTimestamp(Date.now())
-        .setFooter({ text: 'By Dino ❤️', iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` });  
+        .setFooter({ text: 'By Dino ❤️', iconURL: `${client.user.displayAvatarURL({ dynamic: true })}` });
     queue.metadata.send({ embeds: [embedMusic] });
 }
