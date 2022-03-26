@@ -12,6 +12,8 @@ module.exports = {
     let owner = client.users.cache.get(owner_id);
     let prefix = "!";
     let version = "^13.6.0";
+    let helper_id = "283373288321712128";
+    let helper = client.users.cache.get(helper_id)
 
     let embed = new Discord.MessageEmbed()
       .setColor("RANDOM")
@@ -19,7 +21,7 @@ module.exports = {
       .setFooter({text: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
       .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp(new Date())
-      .setDescription(`\\👋| Olá ${message.author}, sou o \`${client.user.username}\`, meu prefix é \`${prefix}\`.\n\\💻| Veja meus comandos com \`${prefix}help\`.\n\🎈| Atualmente estou em \`${server}\` serveres, \`${users}\` usuários e \`${channels}\`channels.\n\🤖| Criado por: \`${owner.tag}\` em JS e utilizo NodeJS e Discord.js na versão \`${version}\`.`);
+      .setDescription(`\\👋 | Olá ${message.author}, sou o \`${client.user.username}\`, meu prefix é \`${prefix}\`.\n\\💻 | Veja meus comandos com \`${prefix}help\`.\n\🎈 | Atualmente estou em \`${server}\` serveres, \`${users}\` usuários e \`${channels}\`channels.\n\🤖 | Criado por: \`${owner.tag}\` em JS e utilizo NodeJS e Discord.js na versão \`${version}\`.\n🆘 | Ajudante: Julião meu helper privado \`${helper.tag}\``);
 
     message.reply({ embeds: [embed] });
   },
