@@ -5,14 +5,13 @@ module.exports = {
   usage: [""], // Coloque sinônimos aqui
 
   run: async (client, message, args) => {
-    let servidor = client.guilds.cache.size;
-    let usuarios = client.users.cache.size;
-    let canais = client.channels.cache.size;
-    let ping = client.ws.ping;
-    let dono_id = "424187328051937292";
-    let dono = client.users.cache.get(dono_id);
-    let prefixo = "!";
-    let versao = "^13.6.0";
+    let server = client.guilds.cache.size;
+    let users = client.users.cache.size;
+    let channels = client.channels.cache.size;
+    let owner_id = "424187328051937292";
+    let owner = client.users.cache.get(owner_id);
+    let prefix = "!";
+    let version = "^13.6.0";
 
     let embed = new Discord.MessageEmbed()
       .setColor("RANDOM")
@@ -20,7 +19,7 @@ module.exports = {
       .setFooter({text: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
       .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp(new Date())
-      .setDescription(`\\👋| Olá ${message.author}, sou o \`${client.user.username}\`, meu prefixo é \`${prefixo}\`.\n\\💻| Veja meus comandos com \`${prefixo}help\`.\n\🎈| Atualmente estou em \`${servidor}\` servidores, \`${usuarios}\` usuários e \`${canais}\`canais.\n\🤖| Criado por: \`${dono.tag}\` em JS e utilizo NodeJS e Discord.js na versão \`${versao}\`.`);
+      .setDescription(`\\👋| Olá ${message.author}, sou o \`${client.user.username}\`, meu prefix é \`${prefix}\`.\n\\💻| Veja meus comandos com \`${prefix}help\`.\n\🎈| Atualmente estou em \`${server}\` serveres, \`${users}\` usuários e \`${channels}\`channels.\n\🤖| Criado por: \`${owner.tag}\` em JS e utilizo NodeJS e Discord.js na versão \`${version}\`.`);
 
     message.reply({ embeds: [embed] });
   },
