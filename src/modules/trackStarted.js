@@ -5,7 +5,7 @@ module.exports = (queue, track) =>{
   
     const embedMusic = new Discord.MessageEmbed()
         .setTitle(track.title)
-        .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
+        .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL({ size: 256, dynamic: true })})
         .setImage(track.thumbnail)
         .setThumbnail("https://media.discordapp.net/attachments/867424753047044141/955976594248314880/3293810.png?width=128&height=128")
         .setColor(embedColor)
