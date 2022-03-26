@@ -15,7 +15,7 @@ module.exports = {
             const array = filtersStatuses[0].length > filtersStatuses[1].length ? filtersStatuses[1] : filtersStatuses[0];
             array.push(filterName.charAt(0).toUpperCase() + filterName.slice(1) + " : " + (client.player.getQueue(message).filters[filterName] ? "success" : "off"));
         });
-
+        
         let embed = new Discord.Embed()
             .setColor("RANDOM")
             .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
