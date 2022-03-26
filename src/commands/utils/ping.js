@@ -10,19 +10,17 @@ module.exports = {
 
         let firstEmbed = new Discord.MessageEmbed()
         .setColor(embedColor)
-        .setDescription(`**\`🏓\` Calculando ping. \`🏓\`**`);
+        .setDescription(`** 👨‍💻 Calculando ping. 👨‍💻**`);
 
         let embed = await message.reply({ content: `${message.author}`, embeds: [firstEmbed] }).then(msg => {
-            setTimeout( () => {
                 let botPing = client.ws.ping;
                 let serverPing = msg.createdTimestamp - message.createdTimestamp;
                         
                 let secondEmbed = new Discord.MessageEmbed()
                     .setColor(embedColor)
-                    .setDescription(`**📶 Server Latency \`${serverPing} ms\` \n**
-                                    **💻 API Latency \`${botPing} ms\`**`);
+                    .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
+                    .setDescription(`**📶 Servidor ** \`${serverPing} ms\` \n**💻 API ** \`${botPing} ms\``)
                 msg.edit({ content: `${message.author}`, embeds: [secondEmbed] })
-            }, 2000)
         })
     }
 }
