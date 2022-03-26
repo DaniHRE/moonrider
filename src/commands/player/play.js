@@ -1,6 +1,5 @@
 const { QueryType } = require('discord-player');
 const Discord = require('discord.js');
-let { interaction } = require('discord.js');
 
 module.exports = {
     name: 'play',

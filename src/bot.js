@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const { Client } = require("discord.js");
 const { Player } = require("discord-player");
-const config = require("../config");
+const config = require("../config.js");
 
 const color = require("./assets/colors.js");
 const banner = require("./assets/banner.js")
