@@ -22,7 +22,6 @@ module.exports = {
       .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp(new Date())
       .setDescription(`\\👋 | Olá ${message.author}, sou o \`${client.user.username}\`, meu prefix é \`${prefix}\`.\n\\💻 | Veja meus comandos com \`${prefix}help\`.\n\🎈 | Atualmente estou em \`${server}\` serveres, \`${users}\` usuários e \`${channels}\`channels.\n\🤖 | Criado por: \`${owner.tag}\` em JS e utilizo NodeJS e Discord.js na versão \`${version}\`.\n🆘 | Ajudante: Julião meu helper privado \`${helper.tag}\``);
-
     message.reply({ embeds: [embed] });
   },
 };
