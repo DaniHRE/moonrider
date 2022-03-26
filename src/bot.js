@@ -24,6 +24,7 @@ global.player.on("trackStart", trackStarted)
 client.login(config.token);
 
 client.once('ready', async () => {
+    client.user.setActivity(client.config.app.playing);
     console.log(colorful(color.branco, "\n=================================")),
     console.log(colorful(color.bright, "✅ - Moonrider 🌑🩸",(colorful(color.blink, color.verde, " Online - ✅")))),
     console.log(colorful(color.branco, "================================="))
