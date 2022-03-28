@@ -6,8 +6,18 @@ module.exports = async (client, message) =>{
 
 	const args = message.content.slice(client.config.prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
+	
+	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
 
-	const command = client.commands.get(commandName);
+	const DJ = client.config.opt.DJ;
+	console.log(command && DJ.enabled && DJ.commands.includes(command.name), command, DJ.enable, DJ.commands.includes(command.name))
+    if (command && DJ.enabled && DJ.commands.includes(command.name)) {
+        const roleDJ = message.guild.roles.cache.find(x => x.name === DJ.roleName);
+		console.log(roleDJ)
+        if (!message.member._roles.includes(roleDJ.id)) {
+            return message.channel.send(`This command is reserved for members with the ${DJ.roleName} role on the server ${message.author}... try again ? ❌`);
+        }
+    }
 
 	if (!command) return;
 
