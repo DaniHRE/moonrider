@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Discord = require("discord.js");
 const { Client } = require("discord.js");
 const { Player } = require("discord-player");
@@ -21,7 +22,7 @@ const trackStarted = require('./modules/trackStarted');
 
 global.player.on("trackStart", trackStarted)
 
-client.login(config.token);
+client.login(process.env.TOKEN);
 
 client.once('ready', async () => {
     client.user.setActivity(client.config.app.playing);
