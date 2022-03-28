@@ -1,9 +1,9 @@
 module.exports = {
-    token: "OTU0MTUwMzI0ODAzODk1MzE2.YjO7vA.zXOmLCQ5whSmUKt42cvlJARqZf8",
-    prefix: "!",
+    token: "XXX",
+    prefix: "XXX",
 
         app: {
-            px: "!",
+            px: "XXX",
             token: "OTU0MTUwMzI0ODAzODk1MzE2.YjO7vA.zXOmLCQ5whSmUKt42cvlJARqZf8",
             playing: "Use !help - Lancelot Beserker 🌑🩸",
             filters: ["8D", "gate", "haas", "phaser", "treble", "tremolo", "vibrato", "karaoke", "flanger", "mcompand", "pulsator", "subboost", "bassboost", "vaporwave", "nightcore", "normalizer", "surrounding"]
