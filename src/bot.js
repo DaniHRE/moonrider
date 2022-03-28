@@ -14,13 +14,13 @@ global.client = new Discord.Client({intents: 32767});
 client.config = config;
 client.cooldowns = new Discord.Collection();
 
-global.player = new Player(client, config.opt.discordPlayer)
+global.player = new Player(client, config.opt.discordPlayer);
 
 const loadEvents = require('./modules/loadEvents');
 const loadCommands = require('./modules/loadCommands');
 const trackStarted = require('./modules/trackStarted');
 
-global.player.on("trackStart", trackStarted)
+global.player.on("trackStart", trackStarted);
 
 client.login(process.env.TOKEN);
 
