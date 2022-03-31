@@ -9,14 +9,14 @@ module.exports = {
     async run(client, message, args) {
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue || !queue.playing) return message.channel.send(`Nenhuma música tocando ${message.author}... ❌`);
 
         const timeToMS = ms(args.join(' '));
 
-        if (timeToMS >= queue.current.durationMS) return message.channel.send(`The indicated time is higher than the total time of the current song ${message.author}... try again ? ❌\n*Try for example a valid time like **5s, 10s, 20 seconds, 1m**...*`);
+        if (timeToMS >= queue.current.durationMS) return message.channel.send(`O tempo indicado é maior que o tempo total da música atual ${message.author}... ❌\n*Tente, por exemplo, um tempo válido como **5s, 10s, 20 segundos, 1m**...*`);
 
         await queue.seek(timeToMS);
 
-        message.channel.send(`Time set on the current song **${ms(timeToMS, { long: true })}** ✅`);
+        message.channel.send(`Tempo definido na música atual **${ms(timeToMS, { long: true })}** ✅`);
     },
 };

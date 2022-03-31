@@ -8,7 +8,7 @@ module.exports = {
     voiceChannel: true,
 
     async run(client, message, args) {
-        if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? ❌`);
+        if (!args[0]) return message.channel.send(`Por favor digite um pesquisa válida ${message.author}... ❌`);
 
         const res = await player.search(args.join(' '), {
             requestedBy: message.member,
@@ -22,7 +22,7 @@ module.exports = {
             return message.channel.send(` ${message.author} Ta tentando me derrubar? coloca uma **Música**. ❌`);
         }
 
-        if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? ❌`);
+        if (!res || !res.tracks.length) return message.channel.send(`Não foram encontrados ${message.author}... tentar novamente ? ❌`);
 
         const queue = await player.createQueue(message.guild, {
             metadata: message.channel
@@ -32,7 +32,7 @@ module.exports = {
             if (!queue.connection) await queue.connect(message.member.voice.channel);
         } catch {
             await player.deleteQueue(message.guild.id);
-            return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
+            return message.channel.send(`Impossível entrar no canal ${message.author}... ❌`);
         }
 
         res.playlist ? queue.addTracks(res.tracks) : queue.addTrack(res.tracks[0]);

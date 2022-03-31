@@ -3,11 +3,11 @@ module.exports = {
     usage: "",
 
     run (client, message, args) {
-        if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel !`);
+        if (!message.member.voice.channel) return message.channel.send(`Você não está em um canal de voz !`);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`You are not in the same voice channel !`);
+        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`Você não está no mesmo canal de voz !`);
 
-        if (!player.getQueue(message)) return message.channel.send(`No music currently playing !`);
+        if (!player.getQueue(message)) return message.channel.send(`Nenhuma música tocando !`);
 
         const filtersStatuses = [[], []];
 
@@ -21,10 +21,10 @@ module.exports = {
             .setAuthor({name: client.user.username, iconURL: client.user.displayAvatarURL({ dynamic: true })})
             .setFooter({text: 'By Dino💓'})
             .addFields(
-                {name:'Filters', value: filtersStatuses[0].join('\n'), inline: true},
+                {name:'Filtros', value: filtersStatuses[0].join('\n'), inline: true},
                 {name: '** **', value: filtersStatuses[1].join('\n'), inline: true })
             .setTimestamp(new Date())
-            .setDescription(`List of all filters enabled or disabled.\nUse \`${client.config.prefix}filter\` to add a filter to a song.`)
+            .setDescription(`Lista de todos os filtros ativados ou desativados.\nUse \`${client.config.prefix}filter\` para adicionar um filtro a uma música.`)
         message.channel.send({embeds: {embed}});
     },
 };

@@ -9,7 +9,7 @@ module.exports = {
     run(client, message) {
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue || !queue.playing) return message.channel.send(`Nenhuma música tocando ${message.author}... ❌`);
 
         const track = queue.current;
 
@@ -17,17 +17,17 @@ module.exports = {
 
         embed.setColor('RED');
         embed.setThumbnail(track.thumbnail);
-        embed.setAuthor(track.title, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
+        embed.setAuthor({name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })});
 
         const methods = ['disabled', 'track', 'queue'];
 
         const timestamp = queue.getPlayerTimestamp();
-        const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
+        const trackDuration = timestamp.progress == 'Infinity' ? 'infinito (live)' : track.duration;
 
-        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
+        embed.setDescription(`Volume **${queue.volume}**%\nDuração **${trackDuration}**\n^Modo repetição **${methods[queue.repeatMode]}**\nRequisitada por ${track.requestedBy}`);
 
         embed.setTimestamp();
-        embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
+        embed.setFooter({text: 'Made by Dino ❤️', iconURL: message.author.avatarURL({ dynamic: true })});
 
         const saveButton = new MessageButton();
 

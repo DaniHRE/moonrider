@@ -10,18 +10,18 @@ module.exports = {
 
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue || !queue.playing) return message.channel.send(`Nenhuma música tocando ${message.author}... ❌`);
 
         const vol = parseInt(args[0]);
 
-        if (!vol) return message.channel.send(`The current volume is ${queue.volume} 🔊\n*To change the volume enter a valid number between **1** and **${maxVol}**.*`);
+        if (!vol) return message.channel.send(`O volume atual é ${queue.volume} 🔊\n*Para alterar o volume, insira um número válido entre **1** e**${maxVol}**.*`);
 
-        if (queue.volume === vol) return message.channel.send(`The volume you want to change is already the current one ${message.author}... try again ? ❌`);
+        if (queue.volume === vol) return message.channel.send(`O volume que você deseja alterar já é o atual ${message.author}... ❌`);
 
-        if (vol < 0 || vol > maxVol) return message.channel.send(`The specified number is not valid. Enter a number between **1** and **${maxVol}** ${message.author}... try again ? ❌`);
+        if (vol < 0 || vol > maxVol) return message.channel.send(`O número especificado não é válido. Insira um número entre **1** e **${maxVol}** ${message.author}... ❌`);
 
         const success = queue.setVolume(vol);
 
-        return message.channel.send(success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${message.author}... try again ? ❌`);
+        return message.channel.send(success ? `O volume foi modificado para **${vol}**/**${maxVol}**% 🔊` : `Algo deu errado ${message.author}... ❌`);
     },
 };

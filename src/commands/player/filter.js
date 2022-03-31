@@ -7,11 +7,11 @@ module.exports = {
     async run(client, message, args) {
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue || !queue.playing) return message.channel.send(`Nenhuma música tocando ${message.author}... ❌`);
 
         const actualFilter = queue.getFiltersEnabled()[0];
         
-        if (!args[0]) return message.channel.send(`Please specify a valid filter to enable or disable ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter} (${client.config.app.px}filter ${actualFilter} to disable it).\n` : ''}`);
+        if (!args[0]) return message.channel.send(`Por favor, coloque um filtro váldo para habilitar ou desabilitar ${message.author}... ❌\n${actualFilter ? `O Filtro atual é: ${actualFilter} (${client.config.app.px}filter ${actualFilter} para desabilitar).\n` : ''}`);
 
         const filters = client.config.app.filters
 
@@ -20,7 +20,7 @@ module.exports = {
 
         const filter = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
 
-        if (!filter) return message.channel.send(`This filter doesn't exist ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters}.`);
+        if (!filter) return message.channel.send(`Esse filtro não existe ${message.author}... ❌\n${actualFilter ? `O Filtro atual é: ${actualFilter}.\n` : ''}Lista dos filtros disponíveis. ${filters}.`);
 
         const filtersUpdated = {};
 
@@ -28,6 +28,6 @@ module.exports = {
 
         await queue.setFilters(filtersUpdated);
 
-        message.channel.send(`The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled ✅' : 'disabled ❌'}**\n*Reminder the longer the music is, the longer this will take.*`);
+        message.channel.send(`O Filtro ${filter} está **${queue.getFiltersEnabled().includes(filter) ? 'habilitado ✅' : 'desabilitado ❌'}**\n*Lembre-se que quanto mais longa for a música, mais tempo levará.*`);
     },
 };

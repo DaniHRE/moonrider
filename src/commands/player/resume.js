@@ -7,10 +7,10 @@ module.exports = {
     run(client, message) {
         const queue = player.getQueue(message.guild.id);
 
-        if (!queue) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue) return message.channel.send(`Nenhuma música tocando ${message.author}... ❌`);
 
         const success = queue.setPaused(false);
 
-        return message.channel.send(success ? `Current music ${queue.current.title} resumed ✅` : `Something went wrong ${message.author}... try again ? ❌`);
+        return message.channel.send(success ? `Música atual ${queue.current.title} resumida ✅` : `Alguma coisa errada ${message.author}... ❌`);
     },
 };
