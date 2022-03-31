@@ -7,33 +7,41 @@ module.exports = {
   permissions: Permissions.FLAGS.MANAGE_MESSAGES,
 
   run: async (client, message, args) => {
-
     const msgCount = parseInt(args[0], 10);
 
-    let limitErr = "Insira um número entre 1 - 99.";
+    if (!msgCount || msgCount > 99)
+      return message.channel.send(`:x: | ${message.author}`);
 
-    if (!msgCount || limitErr < 1 || msgCount > 99)
-      return message.channel.send(
-        `:x: | ${message.author}`
-      );
-
-    const ferinha_apagando_msg = await message.channel.messages.fetch({
-      limit: limitErr + 1,
+    const cleaningMsg = await message.channel.messages.fetch({
+      limit: msgCount + 1,
     });
-    message.channel.bulkDelete(ferinha_apagando_msg);
-    let normalMsg = `✅ | ${message.author} apagou \`${args[0]}\` mensagens!`;
-    let embedMsg = new Discord.MessageEmbed()
+    message.channel.bulkDelete(cleaningMsg);
+
+    let clearMsg = new Discord.MessageEmbed()
       .setColor("RANDOM")
-      .setDescription(
-        `${message.author} apagou \`${args[0]}\` mensagens!`
-      )
+      .setDescription(`** Limpando Mensagens... 🧹**`)
       .setFooter({
-        text: `Limpeza realizada`,
-        iconURL:
-          "http://2.bp.blogspot.com/-dcLYYffAv2w/U1E3Un7Ie1I/AAAAAAAAAAw/uYYS4DWtJBk/s1600/1.gif",
+        text: "By Dino ❤️",
+        iconURL: `${client.user.displayAvatarURL({ dynamic: true })}`,
+      })
+      .setTimestamp(Date.now());
+
+    let embed = await message
+      .reply({ content: `${message.author}`, embeds: [clearMsg] })
+      .then((msg) => {
+        setTimeout(function () {
+          let clearMsg = new Discord.MessageEmbed()
+            .setColor("RANDOM")
+            .setDescription(
+              `✅ | ${message.author} apagou \`${cleaningMsg.size()}\` mensagens!`
+            )
+            .setFooter({
+              text: "By Dino ❤️",
+              iconURL: `${client.user.displayAvatarURL({ dynamic: true })}`,
+            })
+            .setTimestamp(Date.now());
+          msg.edit({ content: `${message.author}`, embeds: [clearMsg] });
+        }, 2000);
       });
-    message.channel
-      .send(embedMsg)
-      .then((msg) => msg.delete({ timeout: 2000 }));
   },
 };

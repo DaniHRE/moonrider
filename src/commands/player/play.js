@@ -15,6 +15,8 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
+        console.log(res.tracks)
+
         if (res.tracks[0].duration == '0:00'){
             await player.deleteQueue(message.guild.id);
             return message.channel.send(` ${message.author} Ta tentando me derrubar? coloca uma **Música**. ❌`);
