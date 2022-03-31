@@ -15,7 +15,7 @@ const processCommands = (client, dir, stack = "") => {
 
     // Ensure some parameters are set
     if (!command.name)
-      return console.warn('Ignoring', file, 'as the meta data is invalid (requires "name" and "commands").')
+      return console.warn('Ignorando', file, 'pois os metadados são inválidos (requer "nome" e "comandos").')
     
     // Description
     if (!command.description)
