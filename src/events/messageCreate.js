@@ -43,7 +43,7 @@ module.exports = async (client, message) =>{
 	if (command && DJ.enabled && DJ.commands.includes(command.name)) {
         const roleDJ = message.guild.roles.cache.find(x => x.name === DJ.roleName);
         if (!message.member._roles.includes(roleDJ.id)) {
-            return message.channel.send(`This command is reserved for members with the ${DJ.roleName} role on the server ${message.author}... try again ? ❌`);
+            return message.channel.send(`Esse comando é reservado para membro com a permissão ${DJ.roleName} no servidor ${message.author}... ❌`);
         }
     }
 
