@@ -62,7 +62,7 @@ module.exports = async (client, message) =>{
 
 		if (now < expirationTime) {
 			const timeLeft = (expirationTime - now) / 1000;
-			return message.reply(`Espere mais ${timeLeft.toFixed(1)} segundos para usar \`${command.name}\` command.`);
+			return message.reply(`Espere mais ${timeLeft.toFixed(1)} segundos para usar \`${command.name}\` commando.`);
 		}
 	}
 
