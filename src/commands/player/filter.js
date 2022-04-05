@@ -11,12 +11,13 @@ module.exports = {
 
         const actualFilter = queue.getFiltersEnabled()[0];
         
-        if (!args[0]) return message.channel.send(`Por favor, coloque um filtro váldo para habilitar ou desabilitar ${message.author}... ❌\n${actualFilter ? `O Filtro atual é: ${actualFilter} (${client.config.app.px}filter ${actualFilter} para desabilitar).\n` : ''}`);
+        if (!args[0]) return message.channel.send(`Por favor, coloque um filtro válido para habilitar ou desabilitar ${message.author}... ❌\n${actualFilter ? `O Filtro atual é: ${actualFilter} (${client.config.app.px}filter ${actualFilter} para desabilitar).\n` : ''}`);
 
         const filters = client.config.app.filters
+        console.log(`Filtros habilitados: ${filters}`)
 
-        queue.getFiltersEnabled().map(x => filters.push(x));
-        queue.getFiltersDisabled().map(x => filters.push(x));
+        // queue.getFiltersEnabled().map(x => filters.push(x));
+        // queue.getFiltersDisabled().map(x => filters.push(x));
 
         const filter = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
 
