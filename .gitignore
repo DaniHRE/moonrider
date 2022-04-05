@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 config.json
-config.js
 *.MD
 *.md
 # Diagnostic reports (https://nodejs.org/api/report.html)
