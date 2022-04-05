@@ -16,9 +16,6 @@ module.exports = {
         const filters = client.config.app.filters
         console.log(`Filtros habilitados: ${filters}`)
 
-        // queue.getFiltersEnabled().map(x => filters.push(x));
-        // queue.getFiltersDisabled().map(x => filters.push(x));
-
         const filter = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
 
         if (!filter) return message.channel.send(`Esse filtro não existe ${message.author}... ❌\n${actualFilter ? `O Filtro atual é: ${actualFilter}.\n` : ''}Lista dos filtros disponíveis. ${filters}.`);
