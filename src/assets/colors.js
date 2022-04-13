@@ -1,6 +1,5 @@
 module.exports = {
     bright: "\x1b[1m",
-    blink: "\x1b[5m",
     preto: "\x1b[30m",
     vermelho: "\x1b[31m",
     verde: "\x1b[32m",
