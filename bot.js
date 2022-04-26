@@ -2,10 +2,10 @@ require('dotenv').config();
 const Discord = require("discord.js");
 const { Client } = require("discord.js");
 const { Player } = require("discord-player");
-const config = require("../config.js");
+const config = require("./config.js");
 
-const color = require("./assets/colors.js");
-const banner = require("./assets/banner.js")
+const color = require("./src/assets/colors.js");
+const banner = require("./src/assets/banner.js")
 const cfonts = require("cfonts");
 
 colorful = (color, string, reset = '\u001b[0m') => color + string + reset;
@@ -16,9 +16,9 @@ client.cooldowns = new Discord.Collection();
 
 global.player = new Player(client, config.opt.discordPlayer);
 
-const loadEvents = require('./modules/loadEvents');
-const loadCommands = require('./modules/loadCommands');
-const trackStarted = require('./modules/trackStarted');
+const loadEvents = require('./src/modules/loadEvents');
+const loadCommands = require('./src/modules/loadCommands');
+const trackStarted = require('./src/modules/trackStarted');
 
 global.player.on("trackStart", trackStarted);
 
