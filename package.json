@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/DaniHRE/moonrider#readme",
   "dependencies": {
-    "@discordjs/opus": "^0.5.3",
+    "@discordjs/opus": "^0.8.0",
     "cfonts": "^2.10.0",
     "discord-player": "^5.2.2",
     "discord.js": "^13.6.0",
